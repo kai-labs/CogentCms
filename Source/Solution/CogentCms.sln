@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CogentCms.WebPublic", "CogentCms.WebClient\CogentCms.WebPublic.csproj", "{F9FE1920-6A6A-4DDA-8C14-F0C3115E0444}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CogentCms.WebPublic", "CogentCms.WebPublic\CogentCms.WebPublic.csproj", "{B216B9BD-105B-405D-A56B-BD523B88EF97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CogentCms.WebAdmin", "CogentCms.WebAdmin\CogentCms.WebAdmin.csproj", "{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F9FE1920-6A6A-4DDA-8C14-F0C3115E0444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9FE1920-6A6A-4DDA-8C14-F0C3115E0444}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9FE1920-6A6A-4DDA-8C14-F0C3115E0444}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9FE1920-6A6A-4DDA-8C14-F0C3115E0444}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B216B9BD-105B-405D-A56B-BD523B88EF97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B216B9BD-105B-405D-A56B-BD523B88EF97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B216B9BD-105B-405D-A56B-BD523B88EF97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B216B9BD-105B-405D-A56B-BD523B88EF97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
