@@ -8,4 +8,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.16" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CogentCms.Core\CogentCms.Core.csproj" />
+  </ItemGroup>
+
 </Project>

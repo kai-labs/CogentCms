@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CogentCms.WebPublic", "CogentCms.WebPublic\CogentCms.WebPublic.csproj", "{B216B9BD-105B-405D-A56B-BD523B88EF97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CogentCms.WebAdmin", "CogentCms.WebAdmin\CogentCms.WebAdmin.csproj", "{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CogentCms.WebAdmin", "CogentCms.WebAdmin\CogentCms.WebAdmin.csproj", "{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CogentCms.Core", "CogentCms.Core\CogentCms.Core.csproj", "{EA90868B-8C09-43C9-B36E-4DF043612EA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8720CA2-F7BB-4C4C-A40A-5B35AF1939E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA90868B-8C09-43C9-B36E-4DF043612EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA90868B-8C09-43C9-B36E-4DF043612EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA90868B-8C09-43C9-B36E-4DF043612EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA90868B-8C09-43C9-B36E-4DF043612EA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
