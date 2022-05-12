@@ -26,7 +26,9 @@ namespace CogentCms.WebAdmin.Controllers
         }
 
         public async Task<IActionResult> Index(string returnUrl)
-        {            
+        {
+            // The token has already been validated by azure and passed via the header below.
+            // This is only secure when running in azure with app authentication turned on.
             var tokenString = webHostEnvironment.IsDevelopment()
                 ? Environment.GetEnvironmentVariable("Cogent_DevAuthToken")
                 : Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"].ToString();
