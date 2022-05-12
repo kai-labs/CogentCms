@@ -17,16 +17,12 @@ namespace CogentCms.WebAdmin.Controllers
     public class AuthController : Controller
     {
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IAppUserService appUserService;
 
-        public AuthController(IWebHostEnvironment webHostEnvironment)
+        public AuthController(IWebHostEnvironment webHostEnvironment, IAppUserService appUserService)
         {
             this.webHostEnvironment = webHostEnvironment;
-        }
-
-        private ClaimsPrincipal CreateClaimsPrincipal(string tokenString)
-        {
-            var tokenJwt = new JwtSecurityTokenHandler().ReadJwtToken(tokenString);
-            return new CogentPrincipalBuilder().BuildFromJwt(tokenJwt, CookieAuthenticationDefaults.AuthenticationScheme);            
+            this.appUserService = appUserService;
         }
 
         public async Task<IActionResult> Index(string returnUrl)
@@ -35,12 +31,27 @@ namespace CogentCms.WebAdmin.Controllers
                 ? Environment.GetEnvironmentVariable("Cogent_DevAuthToken")
                 : Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"].ToString();
 
-            var principal = CreateClaimsPrincipal(tokenString);
-            var authProperties = new AuthenticationProperties();
+            var tokenJwt = new JwtSecurityTokenHandler().ReadJwtToken(tokenString);
+            var idProvider = tokenJwt.Claims.Single(c => c.Type == "iss").Value;
+            var subjectId = tokenJwt.Claims.Single(c => c.Type == "sub").Value;
 
-            await HttpContext.SignInAsync(principal, authProperties);
+            if (!appUserService.DoesAppUserExist(idProvider, subjectId))
+            {
+                return Redirect(nameof(AccessDenied));
+            }
+            else
+            {
+                var principal = new CogentPrincipalBuilder().BuildFromJwt(tokenJwt, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties();
+                await HttpContext.SignInAsync(principal, authProperties);
 
-            return Redirect(returnUrl);
+                return Redirect(returnUrl);
+            }
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

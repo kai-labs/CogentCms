@@ -1,3 +1,16 @@
 ﻿@model CogentCms.WebPublic.Models.Home.HomeIndexView
 
-<h1>Hello, World!</h1>
+@if (Model.BlogPosts.Count == 0)
+{
+    <h1>Whoops, no blog posts here!</h1>
+}
+else
+{
+    foreach (var blogPost in Model.BlogPosts)
+    {
+        <article>
+            <h1>@blogPost.Title</h1>
+            <div>@blogPost.Body</div>
+        </article>
+    }
+}

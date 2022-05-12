@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CogentCms.Core.Auth;
+using CogentCms.Core.Blogs;
+using CogentCms.Core.Sql;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +34,10 @@ namespace CogentCms.WebAdmin
                 });
 
             services.AddAuthorization();
+
+            services.AddScoped(provider => new SqlConnectionFactory(Environment.GetEnvironmentVariable("Cogent_ConnectionString")));
+            services.AddScoped<IAppUserService, AppUserService>();
+            services.AddScoped<IBlogService, BlogService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

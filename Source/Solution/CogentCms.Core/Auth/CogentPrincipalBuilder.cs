@@ -24,7 +24,7 @@ namespace CogentCms.Core.Auth
                     new Claim("name", ReadClaimValue(jwtSecurityToken, "name"))
                 },
                 authenticationType);
-
+            
             return new ClaimsPrincipal(claimsIdentity);
         }
     }
