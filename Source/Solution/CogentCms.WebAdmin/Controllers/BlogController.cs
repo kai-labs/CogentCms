@@ -48,5 +48,29 @@ namespace CogentCms.WebAdmin.Controllers
 
             return Redirect(nameof(Index));
         }
+
+        public IActionResult Detail(int id)
+        {
+            var blogPost = blogService.GetBlogPost(id);
+            var vm = new BlogDetailView { BlogPost = blogPost };
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult Publish(int blogPostId)
+        {
+            blogService.PublishBlogPost(blogPostId, DateTime.UtcNow);
+
+            return RedirectToAction(nameof(Detail), new { id = blogPostId });
+        }
+
+        [HttpPost]
+        public IActionResult Unpublish(int blogPostId)
+        {
+            blogService.UnpublishBlogPost(blogPostId);
+
+            return RedirectToAction(nameof(Detail), new { id = blogPostId });
+        }
     }    
 }

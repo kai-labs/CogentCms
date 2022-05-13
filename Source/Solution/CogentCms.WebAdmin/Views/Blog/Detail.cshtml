@@ -1,0 +1,30 @@
+﻿@model CogentCms.WebAdmin.Models.Blog.BlogDetailView
+
+<article>
+    <h1>@Model.BlogPost.Title</h1>
+    <div>
+        @Model.BlogPost.Body
+    </div>
+</article>
+
+@if (!Model.BlogPost.PublishDate.HasValue)
+{
+<div>
+    @using (Html.BeginForm("Publish", "Blog", FormMethod.Post))
+    {
+        <input type="hidden" name="blogPostId" value="@Model.BlogPost.BlogPostId" />
+        <input type="submit" value="Publish Now" />
+    }
+</div>
+}
+
+@if (Model.BlogPost.PublishDate.HasValue)
+{
+<div>
+    @using (Html.BeginForm("Unpublish", "Blog", FormMethod.Post))
+    {
+        <input type="hidden" name="blogPostId" value="@Model.BlogPost.BlogPostId"/>
+        <input type="submit" value="Unpublish Now" />
+    }
+</div>
+}

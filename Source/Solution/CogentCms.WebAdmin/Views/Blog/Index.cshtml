@@ -4,6 +4,7 @@
     @foreach (var blogPost in Model.BlogPosts)
     {
         <tr>
+            <td>@Html.ActionLink("View Details", "Detail", "Blog", new { id = blogPost.BlogPostId })</td>
             <td>@blogPost.BlogPostId</td>
             <td>@blogPost.Title</td>
             <td>@blogPost.Body.Substring(0, Math.Min(blogPost.Body.Length, 250))</td>

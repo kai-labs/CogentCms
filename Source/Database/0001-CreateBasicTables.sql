@@ -10,7 +10,7 @@ create table [dbo].[AppUser]
 )
 go
 
-create index UX_AppUser_IdProviderSubjectId on AppUser(IdProvider,SubjectId)
+create unique index UX_AppUser_IdProviderSubjectId on AppUser(IdProvider,SubjectId)
 go
 
 
@@ -30,3 +30,8 @@ create table [dbo].[BlogPost]
 
 go
 
+create unique index UX_BlogPost_Slug on BlogPost(Slug)
+go
+
+create index IX_BlogPost_PublishDate on BlogPost(PublishDate)
+go

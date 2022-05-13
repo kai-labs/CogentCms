@@ -10,7 +10,7 @@ else
     {
         <article>
             <h1>@blogPost.Title</h1>
-            <div>@blogPost.Body</div>
+            <div>@Html.Raw(blogPost.Body)</div>
         </article>
     }
 }

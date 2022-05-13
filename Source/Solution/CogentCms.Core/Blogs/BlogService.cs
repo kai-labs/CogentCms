@@ -90,5 +90,52 @@ namespace CogentCms.Core.Blogs
                 return blogPosts;
             }
         }
+
+        public BlogPostData GetBlogPost(int blogPostId)
+        {
+            using (var conn = sqlConnectionFactory.Open())
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "select BlogPostId, Title, Body, Slug, PublishDate from BlogPost where BlogPostId = @BlogPostId";
+                cmd.Parameters.AddWithValue("BlogPostId", blogPostId);
+
+                var blogPosts = new List<BlogPostData>();
+
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        blogPosts.Add(MapBlogPostData(rdr));
+                    }
+                }
+
+                return blogPosts.FirstOrDefault();
+            }
+        }
+
+        public void PublishBlogPost(int blogPostId, DateTime publishDate)
+        {
+            using (var conn = sqlConnectionFactory.Open())
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "update BlogPost set PublishDate = @PublishDate where BlogPostId = @BlogPostId";
+                cmd.Parameters.AddWithValue("BlogPostId", blogPostId);
+                cmd.Parameters.AddWithValue("PublishDate", publishDate);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void UnpublishBlogPost(int blogPostId)
+        {
+            using (var conn = sqlConnectionFactory.Open())
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "update BlogPost set PublishDate = null where BlogPostId = @BlogPostId";
+                cmd.Parameters.AddWithValue("BlogPostId", blogPostId);                
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
