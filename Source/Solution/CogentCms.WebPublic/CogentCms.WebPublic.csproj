@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CogentCms.Core\CogentCms.Core.csproj" />
+    <ProjectReference Include="..\CogentCms.Web\CogentCms.Web.csproj" />
   </ItemGroup>
 
 </Project>

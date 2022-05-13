@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CogentCms.Core.Auth;
 using CogentCms.Core.Blogs;
 using CogentCms.Core.Sql;
+using CogentCms.Web.Auth;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,8 +22,10 @@ namespace CogentCms.WebPublic
         {
             services.AddMvc();
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
 
             services.AddScoped(provider => new SqlConnectionFactory(Environment.GetEnvironmentVariable("Cogent_ConnectionString")));
+            services.AddScoped<ICogentUser, WebCogentUser>();
             services.AddScoped<IBlogService, BlogService>();
         }
 

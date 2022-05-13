@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using CogentCms.Core.Auth;
 using CogentCms.Core.Blogs;
 using CogentCms.Core.Sql;
-using CogentCms.WebAdmin.Models.Shared;
+using CogentCms.Web.Auth;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
