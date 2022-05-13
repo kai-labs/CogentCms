@@ -9,5 +9,6 @@ namespace CogentCms.Core.Auth
     public interface IAppUserService
     {
         bool DoesAppUserExist(string idProvider, string subjectId);
+        AppUserData GetAppUser(string idProvider, string subjectId);
     }
 }

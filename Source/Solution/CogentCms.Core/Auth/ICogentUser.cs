@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CogentCms.Core.Auth
 {
-    interface ICogentUser
+    public interface ICogentUser
     {
+        int AppUserId { get; set; }
         string Username { get; set; }
         string FullName { get; set; }
     }

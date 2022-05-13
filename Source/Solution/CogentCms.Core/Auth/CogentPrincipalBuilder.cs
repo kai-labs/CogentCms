@@ -15,11 +15,12 @@ namespace CogentCms.Core.Auth
             return jwtSecurityToken.Claims.Single(c => c.Type == claimType).Value;
         }
 
-        public ClaimsPrincipal BuildFromJwt(JwtSecurityToken jwtSecurityToken, string authenticationType)
+        public ClaimsPrincipal Build(JwtSecurityToken jwtSecurityToken, AppUserData appUser, string authenticationType)
         {
             var claimsIdentity = new ClaimsIdentity(
                 new List<Claim>
                 {
+                    new Claim("AppUserId", appUser.AppUserId.ToString()),
                     new Claim("sub", ReadClaimValue(jwtSecurityToken, "sub")),
                     new Claim("name", ReadClaimValue(jwtSecurityToken, "name"))
                 },

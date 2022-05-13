@@ -1,0 +1,26 @@
+﻿@model CogentCms.WebAdmin.Models.Blog.BlogCreateForm
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title)
+        @Html.ValidationMessageFor(x => x.Title)
+    </div>
+
+    <div>
+        @Html.LabelFor(x => x.Body)
+        @Html.TextAreaFor(x => x.Body)
+        @Html.ValidationMessageFor(x => x.Body)
+    </div>
+
+    <div>
+        @Html.LabelFor(x => x.Slug)
+        @Html.TextBoxFor(x => x.Slug)
+        @Html.ValidationMessageFor(x => x.Slug)
+    </div>
+
+    <div>
+        <input type="submit" value="Save Post" />
+    </div>
+}

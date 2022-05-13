@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CogentCms.Core.Auth;
 using CogentCms.Core.Blogs;
 using CogentCms.Core.Sql;
+using CogentCms.WebAdmin.Models.Shared;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
@@ -36,6 +37,7 @@ namespace CogentCms.WebAdmin
             services.AddAuthorization();
 
             services.AddScoped(provider => new SqlConnectionFactory(Environment.GetEnvironmentVariable("Cogent_ConnectionString")));
+            services.AddScoped<ICogentUser, WebCogentUser>();
             services.AddScoped<IAppUserService, AppUserService>();
             services.AddScoped<IBlogService, BlogService>();
         }

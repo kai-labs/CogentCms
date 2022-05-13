@@ -37,13 +37,15 @@ namespace CogentCms.WebAdmin.Controllers
             var idProvider = tokenJwt.Claims.Single(c => c.Type == "iss").Value;
             var subjectId = tokenJwt.Claims.Single(c => c.Type == "sub").Value;
 
-            if (!appUserService.DoesAppUserExist(idProvider, subjectId))
+            var appUser = appUserService.GetAppUser(idProvider, subjectId);
+
+            if (appUser == null)
             {
                 return Redirect(nameof(AccessDenied));
             }
             else
             {
-                var principal = new CogentPrincipalBuilder().BuildFromJwt(tokenJwt, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new CogentPrincipalBuilder().Build(tokenJwt, appUser, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authProperties = new AuthenticationProperties();
                 await HttpContext.SignInAsync(principal, authProperties);
 
