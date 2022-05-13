@@ -10,6 +10,9 @@ else
     {
         <article>
             <h1>@blogPost.Title</h1>
+            <div class="post-meta">
+                <span class="publish-date">@blogPost.PublishDate.Value.ToLocalTime().ToLongDateString()</span>
+            </div>
             <div>@Html.Raw(blogPost.Body)</div>
         </article>
     }
