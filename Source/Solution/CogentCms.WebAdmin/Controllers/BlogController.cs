@@ -49,6 +49,35 @@ namespace CogentCms.WebAdmin.Controllers
             return Redirect(nameof(Index));
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var blogPost = blogService.GetBlogPost(id);
+
+            var blogEditForm = new BlogEditForm
+            {
+                BlogPostId = blogPost.BlogPostId,
+                Title = blogPost.Title,
+                Body = blogPost.Body,
+                Slug = blogPost.Slug
+            };
+
+            return View(blogEditForm);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(BlogEditForm blogEditForm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(blogEditForm);
+            }
+
+            blogService.UpdateBlogPost(blogEditForm.BlogPostId, blogEditForm.Title, blogEditForm.Body, blogEditForm.Slug);
+
+            return RedirectToAction(nameof(Detail), new { id = blogEditForm.BlogPostId });
+        }
+
         public IActionResult Detail(int id)
         {
             var blogPost = blogService.GetBlogPost(id);

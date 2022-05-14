@@ -63,8 +63,13 @@ body {
     font-family: Arial, Helvetica, sans-serif;    
 }
 
-article {
-    width: 750px;
+.container {
+    max-width: 760px;
+    margin: auto;
+    padding: 0px 10px 0px 10px;
+}
+
+article {    
     margin: 2em auto 5em auto;
 }
 
@@ -86,4 +91,19 @@ article p {
 
 article a {
     color: #336699;
+}
+
+article ul {
+    margin: 0px 0px 1.5em 2em;
+}
+
+article li {
+    line-height: 1.5em;
+    list-style-type: disc;
+}
+
+@media only screen and (max-width: 759px) {
+    .container {
+        width: 100%;
+    }
 }

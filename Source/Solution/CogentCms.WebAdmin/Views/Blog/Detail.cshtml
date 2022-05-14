@@ -7,6 +7,10 @@
     </div>
 </article>
 
+<div>
+    @Html.ActionLink("Edit Post", "Edit", "Blog", new {id = Model.BlogPost.BlogPostId})
+</div>
+
 @if (!Model.BlogPost.PublishDate.HasValue)
 {
 <div>

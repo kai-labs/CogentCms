@@ -11,5 +11,6 @@ namespace CogentCms.Core.Blogs
         BlogPostData GetBlogPost(int blogPostId);
         void PublishBlogPost(int blogPostId, DateTime utcNow);
         void UnpublishBlogPost(int blogPostId);
+        void UpdateBlogPost(int blogPostId, string title, string body, string slug);
     }
 }

@@ -1,7 +1,9 @@
-﻿@model CogentCms.WebAdmin.Models.Blog.BlogCreateForm
+﻿@model CogentCms.WebAdmin.Models.Blog.BlogEditForm
 
 @using (Html.BeginForm())
-{    
+{
+    @Html.HiddenFor(x => x.BlogPostId)
+
     <div>
         @Html.LabelFor(x => x.Title)
         @Html.TextBoxFor(x => x.Title)

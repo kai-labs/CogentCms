@@ -137,5 +137,22 @@ namespace CogentCms.Core.Blogs
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void UpdateBlogPost(int blogPostId, string title, string body, string slug)
+        {
+            var blogPost = GetBlogPost(blogPostId);
+
+            using (var conn = sqlConnectionFactory.Open())
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "update BlogPost set Title = @Title, Body = @Body, Slug = @Slug where BlogPostId = @BlogPostId";
+                cmd.Parameters.AddWithValue("Title", title);
+                cmd.Parameters.AddWithValue("Body", body);
+                cmd.Parameters.AddWithValue("Slug", slug);
+                cmd.Parameters.AddWithValue("BlogPostId", blogPost.BlogPostId);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
