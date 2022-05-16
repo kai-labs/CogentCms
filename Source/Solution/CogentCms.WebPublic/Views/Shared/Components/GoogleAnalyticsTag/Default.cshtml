@@ -1,0 +1,11 @@
+﻿@model CogentCms.WebPublic.Views.Shared.Components.GoogleAnalyticsTag.GoogleAnalyticsTagView
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=@Model.MeasurementId"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '@Model.MeasurementId');
+</script>

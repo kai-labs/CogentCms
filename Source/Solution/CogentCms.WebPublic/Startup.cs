@@ -21,7 +21,12 @@ namespace CogentCms.WebPublic
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddRazorOptions(options =>
+                {
+                    options.ViewLocationFormats.Add("/{0}.cshtml");
+                });
+
             services.AddHttpContextAccessor();
 
             services.AddScoped(provider => new SqlConnectionFactory(Environment.GetEnvironmentVariable("Cogent_ConnectionString")));
